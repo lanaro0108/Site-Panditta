@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panditta Store — Elegância em cada detalhe</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* =============================================
+       CSS VARIABLES & RESET
+    ============================================= */
+        :root {
+            --gold: #C0A062;
+            --gold-light: #D4B87A;
+            --gold-dark: #9A7D46;
+            --gold-pale: #F2EAD8;
+            --cream: #FAF8F4;
+            --beige: #F0EBE1;
+            --white: #FFFFFF;
+            --black: #1A1612;
+            --charcoal: #2E2A24;
+            --muted: #8A7F70;
+            --border: rgba(192, 160, 98, 0.25);
+
+            --ff-display: 'Playfair Display', Georgia, serif;
+            --ff-body: 'Cormorant Garamond', Georgia, serif;
+            --ff-ui: 'Jost', sans-serif;
+
+            --radius: 12px;
+            --shadow: 0 4px 32px rgba(26, 22, 18, 0.08);
+            --shadow-hover: 0 12px 48px rgba(192, 160, 98, 0.22);
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--charcoal);
+            font-family: var(--ff-body);
+            font-size: 18px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =============================================
+       DECORATIVE ORNAMENT LINE
+    ============================================= */
+        .ornament-line {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--gold);
+            font-family: var(--ff-ui);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .ornament-line::before,
+        .ornament-line::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* =============================================
+       HEADER / NAV
+    ============================================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 248, 244, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 clamp(20px, 5vw, 80px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 76px;
+            gap: 24px;
+        }
+
+        /* Logo group */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+
+        .nav-logo img {
+            height: 52px;
+            width: 52px;
+            object-fit: contain;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .nav-logo-text .brand {
+            font-family: var(--ff-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            letter-spacing: .04em;
+        }
+
+        .nav-logo-text .tagline-small {
+            font-family: var(--ff-ui);
+            font-size: 9px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* Nav links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 36px;
+        }
+
+        .nav-links a {
+            font-family: var(--ff-ui);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            position: relative;
+            padding-bottom: 3px;
+            transition: color var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 1.5px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* =============================================
+       HERO / BANNER
+    ============================================= */
+        #inicio {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 80px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle textured background */
+        #inicio::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 50%, rgba(192, 160, 98, 0.07) 0%, transparent 70%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='.5' fill='%23C0A062' opacity='.18'/%3E%3C/svg%3E");
+        }
+
+        /* Decorative rings */
+        .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 160, 98, 0.12);
+            pointer-events: none;
+        }
+
+        .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-ring:nth-child(2) {
+            width: 720px;
+            height: 720px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-ring:nth-child(3) {
+            width: 960px;
+            height: 960px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--ff-ui);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeUp .8s .2s forwards;
+        }
+
+        .nav-logo img.header-logo {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            display: block;
+            transform: none;
+        }
+
+        .hero-title {
+            font-family: var(--ff-display);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeUp .8s .5s forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold-dark);
+        }
+
+        .hero-subtitle {
+            font-family: var(--ff-display);
+            font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--muted);
+            margin: 16px 0 44px;
+            opacity: 0;
+            animation: fadeUp .8s .65s forwards;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            animation: fadeUp .8s .8s forwards;
+        }
+
+        /* =============================================
+       BUTTONS
+    ============================================= */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--ff-ui);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: 16px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.12);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--white);
+            box-shadow: 0 6px 24px rgba(192, 160, 98, 0.35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(192, 160, 98, 0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-dark);
+            border: 1.5px solid var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(192, 160, 98, 0.3);
+        }
+
+        /* =============================================
+       SECTION SHARED
+    ============================================= */
+        section {
+            padding: clamp(60px, 8vw, 110px) clamp(20px, 5vw, 80px);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto 64px;
+        }
+
+        .section-label {
+            font-family: var(--ff-ui);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--ff-display);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold-dark);
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--muted);
+        }
+
+        /* =============================================
+       PRODUCTS GRID
+    ============================================= */
+        #produtos {
+            background: var(--beige);
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        /* Product card */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(192, 160, 98, 0.5);
+        }
+
+        /* Gold accent top bar */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-pale), var(--gold), var(--gold-pale));
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-image-wrap {
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: var(--gold-pale);
+            position: relative;
+        }
+
+        .card-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover .card-image-wrap img {
+            transform: scale(1.06);
+        }
+
+        /* Image overlay on hover */
+        .card-image-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(192, 160, 98, 0.12);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-image-wrap::after {
+            opacity: 1;
+        }
+
+        .card-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-tag {
+            font-family: var(--ff-ui);
+            font-size: 9.5px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .card-name {
+            font-family: var(--ff-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--black);
+            line-height: 1.25;
+        }
+
+        .card-desc {
+            font-family: var(--ff-ui);
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .card-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 4px 0;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: var(--ff-ui);
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            padding: 10px 22px;
+            border: 1.5px solid var(--gold);
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            background: var(--gold);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(192, 160, 98, 0.3);
+        }
+
+        .card-link svg {
+            transition: transform var(--transition);
+        }
+
+        .card-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Placeholder image (gradient) */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* =============================================
+       ABOUT STRIP
+    ============================================= */
+        #sobre {
+            background: var(--black);
+            padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px);
+        }
+
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text .section-label {
+            color: var(--gold-light);
+        }
+
+        .about-text .section-title {
+            color: var(--white);
+        }
+
+        .about-text p {
+            font-family: var(--ff-ui);
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .about-text .btn-gold {
+            margin-top: 36px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(192, 160, 98, 0.2);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            background: rgba(192, 160, 98, 0.08);
+            border-color: rgba(192, 160, 98, 0.45);
+        }
+
+        .stat-num {
+            font-family: var(--ff-display);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-family: var(--ff-ui);
+            font-size: 12px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* =============================================
+       CONTACT / FOOTER
+    ============================================= */
+        #contato {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .contact-inner {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 40px 0 0;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid var(--border);
+            color: var(--muted);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            border-color: var(--gold);
+            color: var(--gold-dark);
+            background: var(--gold-pale);
+            transform: translateY(-2px);
+        }
+
+        /* =============================================
+       FOOTER BAR
+    ============================================= */
+        footer {
+            background: var(--black);
+            padding: 28px clamp(20px, 5vw, 80px);
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-brand {
+            font-family: var(--ff-display);
+            font-size: 1rem;
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .footer-copy {
+            font-family: var(--ff-ui);
+            font-size: 12px;
+            letter-spacing: .08em;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-family: var(--ff-ui);
+            font-size: 11.5px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+        }
+
+        /* =============================================
+       ANIMATIONS
+    ============================================= */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .65s ease, transform .65s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =============================================
+       RESPONSIVE
+    ============================================= */
+        @media (max-width: 900px) {
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                padding: 20px 24px 28px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+       HEADER
+  ============================================================ -->
+    <header>
+        <nav>
+            <a class="nav-logo" href="#inicio" aria-label="Panditta Store — Home">
+                <img class="header-logo" src="assets/logo.png" alt="Logo da Panditta Store" />
+                <div class="nav-logo-text">
+                    <span class="brand">Panditta Store</span>
+                    <span class="tagline-small">Elegância em cada detalhe</span>
+                </div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+
+    <!-- ============================================================
+       HERO BANNER
+  ============================================================ -->
+    <section id="inicio">
+        <!-- Decorative rings -->
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">✦ Bem-vinda à Panditta Store ✦</p>
+
+            <!-- Large logo -->
+            <img src="assets/logo.png" alt="Logo" />
+            <defs>
+                <radialGradient id="gGold" cx="50%" cy="40%" r="55%">
+                    <stop offset="0%" stop-color="#D4B87A" />
+                    <stop offset="100%" stop-color="#9A7D46" />
+                </radialGradient>
+            </defs>
+            <!-- Outer ornament circle -->
+            <circle cx="100" cy="108" r="65" fill="none" stroke="url(#gGold)" stroke-width="2" />
+            <circle cx="100" cy="108" r="57" fill="none" stroke="url(#gGold)" stroke-width=".8" />
+            <!-- Top fleur -->
+            <path d="M100 40 Q106 32 100 24 Q94 32 100 40Z" fill="url(#gGold)" />
+            <path d="M100 40 Q110 30 116 35 Q110 42 100 40Z" fill="url(#gGold)" />
+            <path d="M100 40 Q90 30 84 35 Q90 42 100 40Z" fill="url(#gGold)" />
+            <!-- Scrollwork sides -->
+            <path d="M35 88 Q28 80 34 72 Q44 76 42 88" fill="none" stroke="url(#gGold)" stroke-width="1.8"
+                stroke-linecap="round" />
+            <path d="M165 88 Q172 80 166 72 Q156 76 158 88" fill="none" stroke="url(#gGold)" stroke-width="1.8"
+                stroke-linecap="round" />
+            <path d="M50 148 Q40 158 44 168 Q58 164 62 154" fill="none" stroke="url(#gGold)" stroke-width="1.8"
+                stroke-linecap="round" />
+            <path d="M150 148 Q160 158 156 168 Q142 164 138 154" fill="none" stroke="url(#gGold)" stroke-width="1.8"
+                stroke-linecap="round" />
+
+            <!-- Panda ears -->
+            <ellipse cx="73" cy="65" rx="14" ry="13" fill="url(#gGold)" />
+            <ellipse cx="127" cy="65" rx="14" ry="13" fill="url(#gGold)" />
+            <!-- Head -->
+            <ellipse cx="100" cy="96" rx="40" ry="37" fill="url(#gGold)" />
+            <!-- Eye patches -->
+            <ellipse cx="85" cy="90" rx="11" ry="10" fill="#9A7D46" />
+            <ellipse cx="115" cy="90" rx="11" ry="10" fill="#9A7D46" />
+            <!-- Eye whites -->
+            <ellipse cx="85" cy="91" rx="5" ry="5.5" fill="#FAF8F4" />
+            <ellipse cx="115" cy="91" rx="5" ry="5.5" fill="#FAF8F4" />
+            <!-- Nose -->
+            <ellipse cx="100" cy="105" rx="7" ry="4.5" fill="#9A7D46" />
+            <!-- Smile -->
+            <path d="M90 113 Q100 122 110 113" fill="none" stroke="#9A7D46" stroke-width="2.2" stroke-linecap="round" />
+            <!-- Body hint -->
+            <path d="M62 132 Q68 152 100 156 Q132 152 138 132" fill="url(#gGold)" />
+            </svg>
+
+            <h1 class="hero-title">Elegância em<br /><em>cada detalhe</em></h1>
+            <p class="hero-subtitle">Produtos cuidadosamente selecionados para você</p>
+
+            <div class="hero-cta">
+                <a href="#produtos" class="btn btn-gold">
+                    Ver produtos
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+       PRODUCTS SECTION
+  ============================================================ -->
+    <section id="produtos">
+        <div class="section-header fade-in">
+            <p class="section-label">✦ Nosso Catálogo ✦</p>
+            <h2 class="section-title">Produtos <em>selecionados</em><br />com carinho</h2>
+            <p class="section-desc">Qualidade, sofisticação e cuidado em cada peça da nossa coleção.</p>
+        </div>
+
+        <div class="products-grid">
+
+            <!-- CARD 1: Play-Doh Unicórnio -->
+            <article class="card fade-in">
+                <div class="card-image-wrap">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_758120-MLA100052365721_122025-F.webp"
+                        alt="Play-Doh Unicórnio Mágico" class="card-image" />
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Educativo • Infantil</span>
+                    <h3 class="card-name">Play-Doh Unicórnio Mágico</h3>
+                    <p class="card-desc">Massinha colorida e divertida para estimular a criatividade das crianças. Kit
+                        completo com moldes exclusivos de unicórnio.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <a href="https://www.mercadolivre.com.br/play-doh-unicornio-magico-colorido-massinha-educativa-hasbro-cor-6-cores/p/MLB27885033?pdp_filters=item_id%3AMLB6198395038#polycard_client=mshops-appearance-api&component=collection_grid&wid=MLB6198395038&title=Produtos+recomendados&tracking_id=a39e8cac4806d7366a48d6daf618159f&sid=storefronts&global_position=8"
+                            class="card-link" target="_blank" rel="noopener">
+                            Ver produto
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 2: Fita Cetim -->
+            <article class="card fade-in">
+                <div class="card-image-wrap">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_960699-MLB110120462531_042026-F.webp"
+                        alt="Play-Doh Unicórnio Mágico" class="card-image" />
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Artesanato • Decoração</span>
+                    <h3 class="card-name">Fita Cetim Najar Nº2</h3>
+                    <p class="card-desc">Fita de cetim acetinado de alta qualidade, 10mm de largura por 50 metros. Ideal
+                        para laços, embalagens e decorações elegantes.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <a href="https://www.mercadolivre.com.br/fita-cetim-najar-n-2-10mm-50-metros-1-rolo--diversas-cores/up/MLBU3882654058?pdp_filters=item_id%3AMLB4577356471#polycard_client=mshops-appearance-api&component=collection_grid&wid=MLB4577356471&title=Produtos+recomendados&tracking_id=efadca5020c139658068ca02ba030b0e&sid=storefronts&global_position=8"
+                            class="card-link" target="_blank" rel="noopener">
+                            Ver produto
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 3: Kit Linha Costura -->
+            <article class="card fade-in">
+                <div class="card-image-wrap">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_749266-MLB109896714305_032026-F.webp"
+                        alt="Play-Doh Unicórnio Mágico" class="card-image" />
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Costura • Kit Completo</span>
+                    <h3 class="card-name">Kit Linha de Costura Colorida</h3>
+                    <p class="card-desc">Conjunto completo com linhas de costura em diversas cores vibrantes. Perfeito
+                        para reparos, bordados e projetos criativos.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <a href="https://www.mercadolivre.com.br/kit10-linha-costura-120-reta-1371m-colorida-bonfio-poliester/up/MLBU3819809287?pdp_filters=item_id%3AMLB6410819662#polycard_client=mshops-appearance-api&component=collection_grid&wid=MLB6410819662&title=Produtos+recomendados&tracking_id=fe20fcaecd964c765fe37dc82fac9d30&sid=storefronts&global_position=8"
+                            class="card-link" target="_blank" rel="noopener">
+                            Ver produto
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 4: Barbante -->
+            <article class="card fade-in">
+                <div class="card-image-wrap">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_641718-MLB108823053179_032026-F.webp"
+                        alt="Play-Doh Unicórnio Mágico" class="card-image" />
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Crochê • Artesanato</span>
+                    <h3 class="card-name">Barbante Nº6 para Crochê</h3>
+                    <p class="card-desc">Barbante resistente e macio, espessura nº6, ideal para crochê, macramê e
+                        artesanato em geral. Alta durabilidade e acabamento perfeito.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <a href="https://www.mercadolivre.com.br/barbante-n6-1kg-fio-6-croche-artesanato-tapete-colorido-cor/up/MLBU3845695640?pdp_filters=item_id%3AMLB4525438819#polycard_client=mshops-appearance-api&component=collection_grid&wid=MLB4525438819&title=Produtos+recomendados&tracking_id=c484e0d77f96932260923ffa98892558&sid=storefronts&global_position=8"
+                            class="card-link" target="_blank" rel="noopener">
+                            Ver produto
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+       ABOUT STRIP (dark section)
+  ============================================================ -->
+    <section id="sobre">
+        <div class="about-inner">
+            <div class="about-text fade-in">
+                <p class="section-label">✦ Sobre nós ✦</p>
+                <h2 class="section-title" style="color:var(--white)">Por que escolher a<br /><em>Panditta Store?</em>
+                </h2>
+                <p>Na Panditta Store, cada produto é cuidadosamente selecionado para trazer qualidade e sofisticação ao
+                    seu dia a dia. Acreditamos que elegância não precisa ser inacessível — ela deve estar ao alcance de
+                    todos.</p>
+                <a href="#produtos" class="btn btn-gold" style="margin-top:36px;">Explorar catálogo</a>
+            </div>
+            <div class="about-stats fade-in">
+                <div class="stat-card">
+                    <div class="stat-num">100+</div>
+                    <div class="stat-label">Produtos disponíveis</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">★ 5.0</div>
+                    <div class="stat-label">Avaliação dos clientes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">Fast</div>
+                    <div class="stat-label">Entrega rápida</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Satisfação garantida</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
+    <section id="contato">
+        <div class="contact-inner">
+            <div class="fade-in">
+                <div class="ornament-line" style="margin-bottom:32px;">Fale conosco</div>
+                <h2 class="section-title">Entre em <em>contato</em></h2>
+                <p class="section-desc" style="margin-top:16px;">Dúvidas, sugestões ou pedidos especiais? Estamos aqui
+                    para ajudar você.</p>
+
+                <div class="contact-socials">
+                    <!-- Instagram -->
+                    <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                        </svg>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="#" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="#" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-brand">Panditta Store</span>
+            <ul class="footer-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <span class="footer-copy">© 2026 Panditta Store. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+
+    <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+    <script>
+        // ---- Mobile nav toggle ----
+        const toggle = document.getElementById('navToggle');
+        const navList = document.getElementById('navLinks');
+
+        toggle.addEventListener('click', () => {
+            const isOpen = navList.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu on link click
+        navList.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('open');
+                toggle.setAttribute('aria-expanded', false);
+            });
+        });
+
+        // ---- Scroll reveal (IntersectionObserver) ----
+        const revealEls = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // Stagger siblings inside same parent
+                    const siblings = [...entry.target.parentElement.querySelectorAll('.fade-in')];
+                    const idx = siblings.indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, idx * 90);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealEls.forEach(el => observer.observe(el));
+
+        // ---- Smooth active nav link highlight ----
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+            });
+            navLinks.forEach(link => {
+                link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--gold-dark)' : '';
+            });
+        }, { passive: true });
+    </script>
+
+</body>
+
+</html>
